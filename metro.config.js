@@ -6,22 +6,22 @@
  */
 
 module.exports = {
-  transformer: {
-    babelTransformerPath: require.resolve(
-      'react-native-typescript-transformer',
-    ),
-  },
-  // transformer: {
-  //   getTransformOptions: async () => ({
-  //     transformer: {
-  //       babelTransformerPath: require.resolve(
-  //         'react-native-typescript-transformer',
-  //       ),
-  //     },
-  //     transform: {
-  //       experimentalImportSupport: false,
-  //       inlineRequires: false,
-  //     },
-  //   }),
-  // },
+    transformer: {
+        babelTransformerPath: require.resolve(
+            'react-native-typescript-transformer',
+        ),
+    },
+    // transformer: {
+    //   getTransformOptions: async () => ({
+    //     transformer: {
+    //       babelTransformerPath: require.resolve(
+    //         'react-native-typescript-transformer',
+    //       ),
+    //     },
+    //     transform: {
+    //       experimentalImportSupport: false,
+    //       inlineRequires: false,
+    //     },
+    //   }),
+    // },
 };

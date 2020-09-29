@@ -9,9 +9,10 @@ import {
     Text,
     StatusBar,
     Image,
+    Button,
 } from 'react-native'
 
-const IntroSreen = () => {
+const IntroSreen = ({ navigation }: any) => {
     const [sliderState, setSliderState] = useState({ currentPage: 0 })
     const { width, height } = Dimensions.get('window')
 
@@ -44,7 +45,7 @@ const IntroSreen = () => {
                     }}>
                     <View style={{ width, height }}>
                         <Image
-                            source={require('./src/assets/John-wick-chapter-2.jpg')}
+                            source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
                         />
                         <View style={styles.wrapper}>
@@ -58,7 +59,7 @@ const IntroSreen = () => {
                     </View>
                     <View style={{ width, height }}>
                         <Image
-                            source={require('./src/assets/John-wick-chapter-2.jpg')}
+                            source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
                         />
                         <View style={styles.wrapper}>
@@ -72,7 +73,7 @@ const IntroSreen = () => {
                     </View>
                     <View style={{ width, height }}>
                         <Image
-                            source={require('./src/assets/John-wick-chapter-2.jpg')}
+                            source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
                         />
                         <View style={styles.wrapper}>
@@ -84,7 +85,7 @@ const IntroSreen = () => {
                     </View>
                     <View style={{ width, height }}>
                         <Image
-                            source={require('./src/assets/John-wick-chapter-2.jpg')}
+                            source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
                         />
                         <View style={styles.wrapper}>
@@ -98,7 +99,7 @@ const IntroSreen = () => {
                     </View>
                     <View style={{ width, height }}>
                         <Image
-                            source={require('./src/assets/John-wick-chapter-2.jpg')}
+                            source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
                         />
                         <View style={styles.wrapper}>
@@ -108,6 +109,15 @@ const IntroSreen = () => {
                             <Text style={styles.paragraph}>
                                 ... seriously, it is
                             </Text>
+                            <Button
+                                title="Go to Login"
+                                onPress={() =>
+                                    navigation.reset({
+                                        index: 0,
+                                        routes: [{ name: 'Login' }],
+                                    })
+                                }
+                            />
                         </View>
                     </View>
                 </ScrollView>

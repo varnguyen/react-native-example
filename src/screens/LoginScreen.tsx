@@ -1,21 +1,3 @@
-// import React from 'react'
-// import { View, Text, Button } from 'react-native'
-
-// const LoginScreen = ({ navigation }: any) => {
-//     return (
-//         <View
-//             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//             <Text>Home Screen</Text>
-//             <Button
-//                 title="Go to Register"
-//                 onPress={() => navigation.navigate('Register')}
-//             />
-//         </View>
-//     )
-// }
-
-// export default LoginScreen
-
 import React, { memo, useState } from 'react'
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
 import Background from '../components/Background'
@@ -29,6 +11,7 @@ import { emailValidator, passwordValidator } from '../core/utils'
 const LoginScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState({ value: '', error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
+
     const _onLoginPressed = () => {
         const emailError = emailValidator(email.value)
         const passwordError = passwordValidator(password.value)
@@ -39,6 +22,7 @@ const LoginScreen = ({ navigation }: any) => {
         }
         navigation.navigate('Dashboard')
     }
+
     return (
         <Background>
             <Logo />
@@ -69,7 +53,8 @@ const LoginScreen = ({ navigation }: any) => {
                 secureTextEntry
             />
             <View style={styles.forgotPassword}>
-                <TouchableOpacity onPress={() => navigation.navigate('Forgot')}>
+                <TouchableOpacity
+                    onPress={() => navigation.navigate('ForgotPasswordScreen')}>
                     <Text style={styles.label}>Forgot your password?</Text>
                 </TouchableOpacity>
             </View>
@@ -79,7 +64,7 @@ const LoginScreen = ({ navigation }: any) => {
             <View style={styles.row}>
                 <Text style={styles.label}>Don’t have an account? </Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('Register')}>
+                    onPress={() => navigation.navigate('RegisterScreen')}>
                     <Text style={styles.link}>Sign up</Text>
                 </TouchableOpacity>
             </View>

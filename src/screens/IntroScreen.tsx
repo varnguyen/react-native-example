@@ -9,8 +9,51 @@ import {
     Text,
     StatusBar,
     Image,
-    Button,
+    Button as Buttonxxx,
 } from 'react-native'
+
+import Button from '../components/Button'
+
+const introList = [
+    {
+        src: './../assets/John-wick-chapter-2.jpg',
+        title: 'Quick Search',
+        description: 'Const description react native chapter food wick John',
+    },
+    {
+        src: './../assets/John-wick-chapter-2.jpg',
+        title: 'Variety of food',
+        description: 'Const description react native chapter food wick John',
+    },
+    {
+        src: './../assets/John-wick-chapter-2.jpg',
+        title: 'Search for a place',
+        description: 'Const description react native chapter food wick John',
+    },
+    {
+        src: './../assets/John-wick-chapter-2.jpg',
+        title: 'Fast shipping',
+        description: 'Const description react native chapter food wick John',
+    },
+]
+
+const IntroItem = ({ src, title, description, width, height }: any) => {
+    return (
+        <View style={{ width, height }}>
+            <Image
+                source={require('./../assets/John-wick-chapter-2.jpg')}
+                style={styles.imageStyle}
+            />
+            <View style={styles.wrapper}>
+                <Text style={styles.header}>{title}</Text>
+                <Text style={styles.paragraph}>{description}</Text>
+            </View>
+            <Button mode="contained" onPress={console.log('onPress')}>
+                Login
+            </Button>
+        </View>
+    )
+}
 
 const IntroSreen = ({ navigation }: any) => {
     const [sliderState, setSliderState] = useState({ currentPage: 0 })
@@ -33,7 +76,7 @@ const IntroSreen = ({ navigation }: any) => {
     return (
         <>
             <StatusBar barStyle="dark-content" />
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#ffcc29' }}>
                 <ScrollView
                     style={{ flex: 1 }}
                     horizontal={true}
@@ -43,61 +86,16 @@ const IntroSreen = ({ navigation }: any) => {
                     onScroll={(event: any) => {
                         setSliderPage(event)
                     }}>
-                    <View style={{ width, height }}>
-                        <Image
-                            source={require('./../assets/John-wick-chapter-2.jpg')}
-                            style={styles.imageStyle}
+                    {introList.map((item, index) => (
+                        <IntroItem
+                            key={index}
+                            {...item}
+                            width={width}
+                            height={height}
                         />
-                        <View style={styles.wrapper}>
-                            <Text style={styles.header}>
-                                Nature Imitates Art
-                            </Text>
-                            <Text style={styles.paragraph}>
-                                ....something like that
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{ width, height }}>
-                        <Image
-                            source={require('./../assets/John-wick-chapter-2.jpg')}
-                            style={styles.imageStyle}
-                        />
-                        <View style={styles.wrapper}>
-                            <Text style={styles.header}>
-                                High quality Art work
-                            </Text>
-                            <Text style={styles.paragraph}>
-                                ... for a fraction of the price
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{ width, height }}>
-                        <Image
-                            source={require('./../assets/John-wick-chapter-2.jpg')}
-                            style={styles.imageStyle}
-                        />
-                        <View style={styles.wrapper}>
-                            <Text style={styles.header}>Top Notch Artists</Text>
-                            <Text style={styles.paragraph}>
-                                ... all in one place
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{ width, height }}>
-                        <Image
-                            source={require('./../assets/John-wick-chapter-2.jpg')}
-                            style={styles.imageStyle}
-                        />
-                        <View style={styles.wrapper}>
-                            <Text style={styles.header}>
-                                Best deal on the market
-                            </Text>
-                            <Text style={styles.paragraph}>
-                                ... let's find your next art
-                            </Text>
-                        </View>
-                    </View>
-                    <View style={{ width, height }}>
+                    ))}
+
+                    {/* <View style={{ width, height }}>
                         <Image
                             source={require('./../assets/John-wick-chapter-2.jpg')}
                             style={styles.imageStyle}
@@ -109,28 +107,30 @@ const IntroSreen = ({ navigation }: any) => {
                             <Text style={styles.paragraph}>
                                 ... seriously, it is
                             </Text>
-                            <Button
-                                title="Go to Login"
+                            <Buttonxxx
+                                title="Login"
                                 onPress={() =>
                                     navigation.reset({
                                         index: 0,
-                                        routes: [{ name: 'Login' }],
+                                        routes: [{ name: 'LoginScreen' }],
                                     })
                                 }
                             />
                         </View>
-                    </View>
+                    </View> */}
                 </ScrollView>
                 <View style={styles.paginationWrapper}>
-                    {Array.from(Array(5).keys()).map((key, index) => (
-                        <View
-                            style={[
-                                styles.paginationDots,
-                                { opacity: pageIndex === index ? 1 : 0.2 },
-                            ]}
-                            key={index}
-                        />
-                    ))}
+                    {Array.from(Array(introList.length).keys()).map(
+                        (key, index) => (
+                            <View
+                                style={[
+                                    styles.paginationDots,
+                                    { opacity: pageIndex === index ? 1 : 0.7 },
+                                ]}
+                                key={index}
+                            />
+                        ),
+                    )}
                 </View>
             </SafeAreaView>
         </>
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     },
     paginationWrapper: {
         position: 'absolute',
-        bottom: 200,
+        bottom: 100,
         left: 0,
         right: 0,
         justifyContent: 'center',
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
         height: 10,
         width: 10,
         borderRadius: 10 / 2,
-        backgroundColor: '#0898A0',
+        backgroundColor: '#ffffff',
         marginLeft: 10,
     },
 })

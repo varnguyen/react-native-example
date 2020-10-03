@@ -1,31 +1,16 @@
-// import React from 'react'
-// import { View, Text, Button } from 'react-native'
-
-// const RegisterScreen = ({ navigation }: any) => {
-//     return (
-//         <View
-//             style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-//             <Text>Home Screen</Text>
-//             <Button
-//                 title="Go to Forgot"
-//                 onPress={() => navigation.navigate('Forgot')}
-//             />
-//         </View>
-//     )
-// }
-
-// export default RegisterScreen
-
 import React, { memo, useState } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
-import BackButton from '../components/BackButton'
+
 import { theme } from '../core/theme'
 import { emailValidator, passwordValidator, nameValidator } from '../core/utils'
+import {
+    Background,
+    BackButton,
+    TextInput,
+    Logo,
+    Header,
+    Button,
+} from '../components'
 
 const RegisterScreen = ({ navigation }: any) => {
     const [name, setName] = useState({ value: '', error: '' })

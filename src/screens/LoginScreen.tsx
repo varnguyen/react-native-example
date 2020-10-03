@@ -1,12 +1,9 @@
 import React, { memo, useState } from 'react'
 import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
-import Background from '../components/Background'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import Button from '../components/Button'
-import TextInput from '../components/TextInput'
+
 import { theme } from '../core/theme'
 import { emailValidator, passwordValidator } from '../core/utils'
+import { Background, TextInput, Logo, Header, Button } from '../components'
 
 const LoginScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState({ value: '', error: '' })

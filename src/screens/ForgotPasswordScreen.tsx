@@ -1,13 +1,16 @@
 import React, { memo, useState } from 'react'
 import { Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { emailValidator } from '../core/utils'
-import Background from '../components/Background'
-import BackButton from '../components/BackButton'
-import Logo from '../components/Logo'
-import Header from '../components/Header'
-import TextInput from '../components/TextInput'
 import { theme } from '../core/theme'
-import Button from '../components/Button'
+
+import { emailValidator } from '../core/utils'
+import {
+    Background,
+    BackButton,
+    TextInput,
+    Logo,
+    Header,
+    Button,
+} from '../components'
 
 const ForgotPasswordScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState({ value: '', error: '' })

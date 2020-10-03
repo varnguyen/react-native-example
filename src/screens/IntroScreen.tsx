@@ -9,37 +9,53 @@ import {
     Text,
     StatusBar,
     Image,
-    Button as Buttonxxx,
 } from 'react-native'
 
-import Button from '../components/Button'
-
+// import Button from '../components/Button'
+import { Button } from 'react-native-elements'
+import { ButtonCustom } from '../components'
 const introList = [
     {
         src: './../assets/John-wick-chapter-2.jpg',
         title: 'Quick Search',
-        description: 'Const description react native chapter food wick John',
+        description:
+            'Set your location to start exploring restaurants around you',
     },
     {
         src: './../assets/John-wick-chapter-2.jpg',
         title: 'Variety of food',
-        description: 'Const description react native chapter food wick John',
+        description:
+            'Set your location to start exploring restaurants around you',
     },
     {
         src: './../assets/John-wick-chapter-2.jpg',
         title: 'Search for a place',
-        description: 'Const description react native chapter food wick John',
+        description:
+            'Set your location to start exploring restaurants around you',
     },
     {
         src: './../assets/John-wick-chapter-2.jpg',
         title: 'Fast shipping',
-        description: 'Const description react native chapter food wick John',
+        description:
+            'Set your location to start exploring restaurants around you',
     },
 ]
 
-const IntroItem = ({ src, title, description, width, height }: any) => {
+const IntroItem = ({
+    src,
+    title,
+    description,
+    width,
+    height,
+    navigation,
+}: any) => {
     return (
-        <View style={{ width, height }}>
+        <View
+            style={{
+                width,
+                height,
+                ...styles.itemView,
+            }}>
             <Image
                 source={require('./../assets/John-wick-chapter-2.jpg')}
                 style={styles.imageStyle}
@@ -48,9 +64,16 @@ const IntroItem = ({ src, title, description, width, height }: any) => {
                 <Text style={styles.header}>{title}</Text>
                 <Text style={styles.paragraph}>{description}</Text>
             </View>
-            <Button mode="contained" onPress={console.log('onPress')}>
-                Login
-            </Button>
+            <ButtonCustom
+                raised
+                title={`Login`}
+                onPress={() =>
+                    navigation.reset({
+                        index: 0,
+                        routes: [{ name: 'LoginScreen' }],
+                    })
+                }
+            />
         </View>
     )
 }
@@ -75,10 +98,9 @@ const IntroSreen = ({ navigation }: any) => {
 
     return (
         <>
-            <StatusBar barStyle="dark-content" />
-            <SafeAreaView style={{ flex: 1, backgroundColor: '#ffcc29' }}>
+            <SafeAreaView style={styles.container}>
                 <ScrollView
-                    style={{ flex: 1 }}
+                    contentContainerStyle={styles.scrollView}
                     horizontal={true}
                     scrollEventThrottle={16}
                     pagingEnabled={true}
@@ -92,32 +114,9 @@ const IntroSreen = ({ navigation }: any) => {
                             {...item}
                             width={width}
                             height={height}
+                            navigation={navigation}
                         />
                     ))}
-
-                    {/* <View style={{ width, height }}>
-                        <Image
-                            source={require('./../assets/John-wick-chapter-2.jpg')}
-                            style={styles.imageStyle}
-                        />
-                        <View style={styles.wrapper}>
-                            <Text style={styles.header}>
-                                It's all about art
-                            </Text>
-                            <Text style={styles.paragraph}>
-                                ... seriously, it is
-                            </Text>
-                            <Buttonxxx
-                                title="Login"
-                                onPress={() =>
-                                    navigation.reset({
-                                        index: 0,
-                                        routes: [{ name: 'LoginScreen' }],
-                                    })
-                                }
-                            />
-                        </View>
-                    </View> */}
                 </ScrollView>
                 <View style={styles.paginationWrapper}>
                     {Array.from(Array(introList.length).keys()).map(
@@ -138,14 +137,31 @@ const IntroSreen = ({ navigation }: any) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#ffcc29',
+    },
+    scrollView: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     imageStyle: {
         height: PixelRatio.getPixelSizeForLayoutSize(135),
         width: '100%',
+        maxWidth: 150,
+        maxHeight: 150,
+    },
+    itemView: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        padding: 10,
     },
     wrapper: {
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 30,
+        marginVertical: 50,
     },
     header: {
         fontSize: 30,
@@ -154,6 +170,7 @@ const styles = StyleSheet.create({
     },
     paragraph: {
         fontSize: 17,
+        paddingHorizontal: 5,
     },
     paginationWrapper: {
         position: 'absolute',

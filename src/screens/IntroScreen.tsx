@@ -11,8 +11,7 @@ import {
     Image,
 } from 'react-native'
 
-// import Button from '../components/Button'
-import { Button } from 'react-native-elements'
+import { theme } from '../core/theme'
 import { ButtonCustom } from '../components'
 const introList = [
     {
@@ -139,7 +138,7 @@ const IntroSreen = ({ navigation }: any) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffcc29',
+        backgroundColor: theme.colors.main,
     },
     scrollView: {
         flexGrow: 1,
@@ -185,7 +184,7 @@ const styles = StyleSheet.create({
         height: 10,
         width: 10,
         borderRadius: 10 / 2,
-        backgroundColor: '#ffffff',
+        backgroundColor: theme.colors.white,
         marginLeft: 10,
     },
 })

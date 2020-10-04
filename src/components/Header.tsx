@@ -9,7 +9,7 @@ const Header = ({ children }: any) => (
 const styles = StyleSheet.create({
     header: {
         fontSize: 26,
-        color: theme.colors.primary,
+        color: theme.colors.colors,
         fontWeight: 'bold',
         paddingVertical: 14,
     },

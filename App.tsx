@@ -14,9 +14,9 @@ import App from './src'
 
 const Main = () => {
     return (
-        // <PaperProvider>
-        <App />
-        // </PaperProvider>
+        <PaperProvider>
+            <App />
+        </PaperProvider>
     )
 }
 

@@ -2,6 +2,8 @@ import React, { memo } from 'react'
 import { StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements'
 
+import { theme } from '../core/theme'
+
 const ButtonCustom = ({ mode = '', style, children, ...props }: any) => (
     <Button
         raised
@@ -14,19 +16,19 @@ const ButtonCustom = ({ mode = '', style, children, ...props }: any) => (
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: '#ffffff',
+        backgroundColor: theme.colors.white,
     },
     title: {
         textAlign: 'center',
-        color: '#000000',
+        color: theme.colors.black,
         width: '100%',
     },
     buttonMain: {
-        backgroundColor: '#ffcc29',
+        backgroundColor: theme.colors.main,
     },
     titleMain: {
         textAlign: 'center',
-        color: '#ffffff',
+        color: theme.colors.white,
         width: '100%',
     },
 })

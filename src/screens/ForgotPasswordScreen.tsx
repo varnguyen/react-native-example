@@ -9,7 +9,7 @@ import {
     TextInput,
     Logo,
     Header,
-    Button,
+    ButtonCustom,
 } from '../components'
 
 const ForgotPasswordScreen = ({ navigation }: any) => {
@@ -30,12 +30,12 @@ const ForgotPasswordScreen = ({ navigation }: any) => {
         <Background>
             <BackButton goBack={() => navigation.navigate('LoginScreen')} />
 
-            <Logo />
+            <Header>Forgot Password?</Header>
 
-            <Header>Restore Password</Header>
+            <Text style={styles.subTitle}>Please enter your email</Text>
 
             <TextInput
-                label="E-mail address"
+                label="Email"
                 returnKeyType="done"
                 value={email.value}
                 onChangeText={(text: string) =>
@@ -49,12 +49,13 @@ const ForgotPasswordScreen = ({ navigation }: any) => {
                 keyboardType="email-address"
             />
 
-            <Button
-                mode="contained"
+            <ButtonCustom
+                raised
+                mode="main"
+                title={`Submit`}
+                style={styles.button}
                 onPress={_onSendPressed}
-                style={styles.button}>
-                Send Reset Instructions
-            </Button>
+            />
 
             <TouchableOpacity
                 style={styles.back}
@@ -76,6 +77,9 @@ const styles = StyleSheet.create({
     label: {
         color: theme.colors.secondary,
         width: '100%',
+    },
+    subTitle: {
+        color: theme.colors.secondary,
     },
 })
 

@@ -7,9 +7,8 @@ import {
     Background,
     BackButton,
     TextInput,
-    Logo,
     Header,
-    Button,
+    ButtonCustom,
 } from '../components'
 
 const RegisterScreen = ({ navigation }: any) => {
@@ -29,19 +28,19 @@ const RegisterScreen = ({ navigation }: any) => {
             return
         }
 
-        navigation.navigate('Dashboard')
+        navigation.navigate('Home')
     }
 
     return (
         <Background>
-            <BackButton goBack={() => navigation.navigate('HomeScreen')} />
-
-            <Logo />
+            <BackButton goBack={() => navigation.navigate('LoginScreen')} />
 
             <Header>Create Account</Header>
 
+            <Text style={styles.subTitle}>Create your account</Text>
+
             <TextInput
-                label="Name"
+                label="Username"
                 returnKeyType="next"
                 value={name.value}
                 onChangeText={(text: string) =>
@@ -78,18 +77,30 @@ const RegisterScreen = ({ navigation }: any) => {
                 secureTextEntry
             />
 
-            <Button
-                mode="contained"
+            <ButtonCustom
+                raised
+                mode="main"
+                title={`Sign Up`}
+                style={styles.button}
                 onPress={_onSignUpPressed}
-                style={styles.button}>
-                Sign Up
-            </Button>
+            />
 
-            <View style={styles.row}>
-                <Text style={styles.label}>Already have an account? </Text>
+            <View style={styles.term}>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('LoginScreen')}>
-                    <Text style={styles.link}>Login</Text>
+                    <Text style={styles.link}>Terms & Conditions</Text>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.footer}>
+                <TouchableOpacity
+                    onPress={() =>
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'RegisterScreen' }],
+                        })
+                    }>
+                    <Text style={styles.link}>Log in your account</Text>
                 </TouchableOpacity>
             </View>
         </Background>
@@ -101,15 +112,23 @@ const styles = StyleSheet.create({
         color: theme.colors.secondary,
     },
     button: {
-        marginTop: 24,
+        marginTop: 30,
     },
-    row: {
+    term: {
         flexDirection: 'row',
-        marginTop: 4,
+        marginTop: 30,
     },
     link: {
-        fontWeight: 'bold',
-        color: theme.colors.primary,
+        color: theme.colors.link,
+    },
+    subTitle: {
+        color: theme.colors.secondary,
+    },
+    footer: {
+        flexDirection: 'row',
+        marginTop: 4,
+        position: 'absolute',
+        bottom: 50,
     },
 })
 

@@ -3,7 +3,7 @@ import { TouchableOpacity, StyleSheet, Text, View } from 'react-native'
 
 import { theme } from '../core/theme'
 import { emailValidator, passwordValidator } from '../core/utils'
-import { Background, TextInput, Logo, Header, Button } from '../components'
+import { Background, TextInput, ButtonCustom, Header } from '../components'
 
 const LoginScreen = ({ navigation }: any) => {
     const [email, setEmail] = useState({ value: '', error: '' })
@@ -17,13 +17,16 @@ const LoginScreen = ({ navigation }: any) => {
             setPassword({ ...password, error: passwordError })
             return
         }
-        navigation.navigate('Dashboard')
+
+        navigation.reset({
+            index: 0,
+            routes: [{ name: 'Home' }],
+        })
     }
 
     return (
         <Background>
-            <Logo />
-            <Header>Welcome back.</Header>
+            <Header>Log in</Header>
             <TextInput
                 label="Email"
                 returnKeyType="next"
@@ -51,18 +54,30 @@ const LoginScreen = ({ navigation }: any) => {
             />
             <View style={styles.forgotPassword}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('ForgotPasswordScreen')}>
-                    <Text style={styles.label}>Forgot your password?</Text>
+                    onPress={() =>
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'ForgotPasswordScreen' }],
+                        })
+                    }>
+                    <Text style={styles.label}>Forgot password?</Text>
                 </TouchableOpacity>
             </View>
-            <Button mode="contained" onPress={_onLoginPressed}>
-                Login
-            </Button>
+            <ButtonCustom
+                raised
+                mode="main"
+                title={`Login`}
+                onPress={_onLoginPressed}
+            />
             <View style={styles.row}>
-                <Text style={styles.label}>Don’t have an account? </Text>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('RegisterScreen')}>
-                    <Text style={styles.link}>Sign up</Text>
+                    onPress={() =>
+                        navigation.reset({
+                            index: 0,
+                            routes: [{ name: 'RegisterScreen' }],
+                        })
+                    }>
+                    <Text style={styles.link}>Sign up an account</Text>
                 </TouchableOpacity>
             </View>
         </Background>
@@ -78,13 +93,14 @@ const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
         marginTop: 4,
+        position: 'absolute',
+        bottom: 50,
     },
     label: {
-        color: theme.colors.secondary,
+        color: theme.colors.link,
     },
     link: {
-        fontWeight: 'bold',
-        color: theme.colors.primary,
+        color: theme.colors.link,
     },
 })
 
